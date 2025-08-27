@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Authetication Application {% endblock %}</title>
+    {% block style %}{% endblock %}
+    
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation Bar-->
+        <div class="navbar">
+            <!-- Left side of the navigation Bar -->
+            <div class="navbar-left">
+                <div class="logo">
+                    <img src="#" alt="#">
+                </div>
+                <p class="brand">Auth-App</p>
+            </div>
+            <!-- Right Side of the Navigation Bar -->
+             <div class="navbar-right">
+                <ul>
+                    <li><a href="{{ url_for('home')}}" class="navbar-item">Home</a></li>
+                    {% if current_user.is_authenticated %}
+                        <li><a href="{{ url_for('profile')}}" class="navbar-item">Profile</a></li>
+                        <li><a href="{{ url_for('logout')}}" class="navbar-item">Logout</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('login')}}" class="navbar-item">Login</a></li>
+                        <li><a href="{{ url_for('register')}}" class="navbar-item">Register</a></li>
+                    {% endif %}
+                </ul>
+             </div>
+        </div>
+
+        <main class="content">
+            {% block content %}{% endblock %}
+        </main>
+
+
+    </div>
+
+</body>
+</html>

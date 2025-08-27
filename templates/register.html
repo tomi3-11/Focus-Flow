@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Register - Auth-App{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="#">
+{% endblock %}
+
+{% block content %}
+
+    <div class="register">
+        <h1 class="title">Register</h1>
+        <div class="message-box">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="notification">
+                        {{ messages[0] }}
+                    </div>
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <form action="/register" method="POST">
+            <div class="fields">
+                <label for="username">Username</label>
+                <input type="text" name="username" placeholder="Username..." class="r-input"> <br>
+                <label for="password">Password</label>
+                <input type="password" name="password" placeholder="Password..." class="r-input">
+                <div class="btn">
+                    <button class="register-btn">Rigister</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

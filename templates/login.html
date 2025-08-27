@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %} Login - Auth-App{% endblock %} 
+
+{% block style %}
+<link rel="stylesheet" href="#">
+{% endblock %}
+
+{% block content %}
+    <div class="login">
+        <h1 class="title">Login</h1>
+        <div class="box">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="notification">
+                        {{ messages[0] }}
+                    </div>
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <form method="POST" action="/login">
+            <label for="username">Username: </label>
+            <input type="text" name="username" placeholder="Username..." class="l-input"> <br>
+            <label for="password">Password: </label>
+            <input type="password" name="password" placeholder="Password..." class="l-input"> <br>
+            <label for="remember">
+                Remember Me 
+                <input type="checkbox" name="remember">
+            </label>
+            <div class="btn">
+                <button class="login-btn" type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
