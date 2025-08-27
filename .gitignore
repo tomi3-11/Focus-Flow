@@ -1,0 +1,17 @@
+# Virtual environments
+.venv
+venv
+env 
+
+# Environmental variables
+.env
+
+# database
+sqlite3 
+db.sqlite
+*/instance
+instance/
+
+
+# Cache
+__pycache__/
