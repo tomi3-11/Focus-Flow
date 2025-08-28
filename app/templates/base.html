@@ -21,13 +21,13 @@
             <!-- Right Side of the Navigation Bar -->
              <div class="navbar-right">
                 <ul>
-                    <li><a href="{{ url_for('home')}}" class="navbar-item">Home</a></li>
+                    <li><a href="{{ url_for('main.home')}}" class="navbar-item">Home</a></li>
                     {% if current_user.is_authenticated %}
-                        <li><a href="{{ url_for('profile')}}" class="navbar-item">Profile</a></li>
-                        <li><a href="{{ url_for('logout')}}" class="navbar-item">Logout</a></li>
+                        <li><a href="{{ url_for('main.profile')}}" class="navbar-item">Profile</a></li>
+                        <li><a href="{{ url_for('auth.logout')}}" class="navbar-item">Logout</a></li>
                     {% else %}
-                        <li><a href="{{ url_for('login')}}" class="navbar-item">Login</a></li>
-                        <li><a href="{{ url_for('register')}}" class="navbar-item">Register</a></li>
+                        <li><a href="{{ url_for('auth.login')}}" class="navbar-item">Login</a></li>
+                        <li><a href="{{ url_for('auth.register')}}" class="navbar-item">Register</a></li>
                     {% endif %}
                 </ul>
              </div>

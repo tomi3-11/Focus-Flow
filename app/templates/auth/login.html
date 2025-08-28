@@ -20,17 +20,44 @@
         </div>
 
         <form method="POST" action="/login">
-            <label for="username">Username: </label>
-            <input type="text" name="username" placeholder="Username..." class="l-input"> <br>
-            <label for="password">Password: </label>
-            <input type="password" name="password" placeholder="Password..." class="l-input"> <br>
-            <label for="remember">
-                Remember Me 
-                <input type="checkbox" name="remember">
-            </label>
-            <div class="btn">
-                <button class="login-btn" type="submit">Login</button>
+            {{ form.hidden_tag() }}
+            <div class="username">
+                {{ form.username.label() }}
+                {{ form.username() }}
+                <!-- Displays Errors -->
+                {% if form.username.errors %}
+                    <div class="text">
+                        {% for error in form.username.errors %}
+                            <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="password">
+                {{ form.password.label() }}
+                {{ form.password() }}
+
+                <!-- Displays Errors -->
+                {% if form.password.errors %}
+                    <div class="text">
+                        {% for error in form.password.errors %}
+                            <small>{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="remember">
+                {{ form.remember() }}
+                {{ form.remember.label() }}
+            </div>
+
+            <div class="button">
+                {{ form.submit() }}
             </div>
         </form>
+        <div class="text-center">
+            <small>Need an Account? <a href="{{ url_for(auth.register)}}" class="btn">Register Now</a></small>
+        </div>
     </div>
 {% endblock %}

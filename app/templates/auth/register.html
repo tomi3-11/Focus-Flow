@@ -21,16 +21,52 @@
         </div>
 
         <form action="/register" method="POST">
-            <div class="fields">
-                <label for="username">Username</label>
-                <input type="text" name="username" placeholder="Username..." class="r-input"> <br>
-                <label for="password">Password</label>
-                <input type="password" name="password" placeholder="Password..." class="r-input">
-                <div class="btn">
-                    <button class="register-btn">Register</button>
-                </div>
+            {{ form.hidden_tag() }}
+            <div class="username">
+                {{ form.username.label() }}
+                {{ form.username() }}
+                <!-- Displaying Errors -->
+                 {% if form.username.errors %}
+                    <div class="text">
+                        {% for error in form.username.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                 {% endif %}
+            </div>
+            <div class="password">
+                {{ form.password.label() }}
+                {{ form.password() }}
+                <!-- Displaying Errors -->
+                 {% if form.password.errors %}
+                    <div class="text">
+                        {% for error in form.password.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                 {% endif %}
+            </div>
+            <div class="confirm-password">
+                {{ form.confirm-password.label() }}
+                {{ form.confirm-password() }}
+                <!-- Displaying Errors -->
+                 {% if form.confirm-password.errors %}
+                    <div class="text">
+                        {% for error in form.confirm-password.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                 {% endif %}
+            </div>
+
+            <div class="button">
+                {{ form.submit() }}
             </div>
         </form>
+
+        <div class="text-center">
+            <small>Already have an Account? <a href="{{ url_for(auth.login)}}" class="btn">Login Now</a></small>
+        </div>
     </div>
 
 {% endblock %}

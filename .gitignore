@@ -15,3 +15,6 @@ instance/
 
 # Cache
 __pycache__/
+
+# other 
+app.py
