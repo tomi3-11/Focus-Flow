@@ -1,0 +1,1 @@
+# Routes for authentications i.e. Login, Register & Logout.
