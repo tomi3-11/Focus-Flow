@@ -26,5 +26,8 @@ def create_app(config_class=Config):
     # Register blueprints
     app.register_blueprint(auth_bp, url_prefix="")
     app.register_blueprint(main_bp)
+
+    with app.app_context():
+        db.creat_all()
     
     return app
