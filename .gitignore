@@ -11,6 +11,8 @@ sqlite3
 db.sqlite
 */instance
 instance/
+app.db
+*.db
 
 
 # Cache
