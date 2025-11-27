@@ -28,6 +28,6 @@ def create_app(config_class=Config):
     app.register_blueprint(main_bp)
 
     with app.app_context():
-        db.creat_all()
+        db.create_all()
     
     return app
