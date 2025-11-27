@@ -11,4 +11,4 @@ def home():
 @main_bp.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html', title='Profile')
+    return render_template('profile.html', title='Profile', name=current_user.username)

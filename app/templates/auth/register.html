@@ -47,12 +47,12 @@
                  {% endif %}
             </div>
             <div class="confirm-password">
-                {{ form.confirm-password.label() }}
-                {{ form.confirm-password() }}
+                {{ form.confirm_password.label() }}
+                {{ form.confirm_password() }}
                 <!-- Displaying Errors -->
-                 {% if form.confirm-password.errors %}
+                 {% if form.confirm_password.errors %}
                     <div class="text">
-                        {% for error in form.confirm-password.errors %}
+                        {% for error in form.confirm_password.errors %}
                             {{ error }}
                         {% endfor %}
                     </div>
@@ -65,7 +65,7 @@
         </form>
 
         <div class="text-center">
-            <small>Already have an Account? <a href="{{ url_for(auth.login)}}" class="btn">Login Now</a></small>
+            <small>Already have an Account? <a href="{{ url_for('auth.login')}}" class="btn">Login Now</a></small>
         </div>
     </div>
 

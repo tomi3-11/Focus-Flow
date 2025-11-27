@@ -6,7 +6,7 @@ from flask_login import login_user, logout_user, current_user, login_required
 from app.auth.forms import LoginForm, RegisterForm
 
 
-auth_bp = Blueprint('auth', __name__, template_folder='../templates/auth')
+auth_bp = Blueprint('auth', __name__, url_prefix="/auth", template_folder='../templates/auth')
 
 # Login
 @auth_bp.route('/login', methods=['GET', 'POST'])
@@ -21,11 +21,14 @@ def login():
             login_user(user, remember=form.remember.data)
             next_page = request.args.get('next')
             flash('Login Successfully.', 'success')
-            return redirect(url_for(next_page) if next_page else redirect(url_for('main.profile')))
+            if next_page:
+                return redirect(next_page)
+            else:
+                return redirect(url_for('main.profile'))
         else:
             flash('Login Unsuccessfull, please enter the correct username and password!', 'danger')
     
-    return render_template('login.html',title='Login', form=form)
+    return render_template('auth/login.html',title='Login', form=form)
 
 
 # Register
@@ -35,7 +38,7 @@ def register():
         return redirect(url_for('main.profile'))
     
     form = RegisterForm()
-    if form.validate_on_submit:
+    if form.validate_on_submit():
         user = User(username=form.username.data)
         user.set_password(form.password.data)
         db.session.add(user)
@@ -44,7 +47,7 @@ def register():
         
         return redirect(url_for('auth.login'))
     
-    return render_template('register.html', title='Register', form=form)
+    return render_template('auth/register.html', title='Register', form=form)
 
 
 # logout
