@@ -7,7 +7,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True)
-    password_hash = db.Column(db.String(100))
+    password_hash = db.Column(db.String(255))
     
     # Set hashed password
     def set_password(self, password):
